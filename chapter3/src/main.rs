@@ -13,8 +13,7 @@ fn temp_convert(temperature: f32, base: char) -> f32 {
     } else if base == 'F' {
         (temperature - 32.0) * (5.0 / 9.0)
     } else {
-        println!("Only conversions between Celsuis (C) and Fahnrenheit (F) are possible.");
-        -9999.0
+        panic!("Only conversions between Celsuis (C) and Fahnrenheit (F) are possible.")
     }
 }
 
