@@ -1,5 +1,5 @@
 [package]
-name = "chapter4"
+name = "chapter4: Understanding OWNERSHIP"
 version = "0.1.0"
 authors = ["Mamadou S Diallo <msdiallo@quantifyafrica.org>"]
 edition = "2018"
