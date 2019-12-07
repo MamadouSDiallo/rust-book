@@ -1,4 +1,4 @@
-// Understanding OWNERSHIP
+// Chapter 4: Understanding OWNERSHIP
 
 fn main() {
     let mut s = String::from("Hello");
