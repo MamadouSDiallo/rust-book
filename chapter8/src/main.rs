@@ -33,4 +33,31 @@ fn main() {
         *i += 50.;
     }
     println!("{:?}", v);
+
+    let len = String::from("Hola$%@$#@&@").len();
+    println!("{}", len);
+
+    for c in "Hello@#$@41".chars() {
+        println!("{}", c)
+    }
+
+    for b in "Hello@#$@41".bytes() {
+        println!("{}", b)
+    }
+
+    use std::collections::HashMap;
+
+    let mut scores = HashMap::new();
+
+    scores.insert(String::from("Blue"), 10);
+    scores.insert(String::from("Yellow"), 25);
+
+    println!("{:?} \n", scores);
+
+    let teams = vec![String::from("Blue"), String::from("Yellow")];
+    let initial_scores = vec![10, 50];
+
+    let scores: HashMap<_, _> = teams.iter().zip(initial_scores.iter()).collect();
+
+    println!("{:?}", scores)
 }
