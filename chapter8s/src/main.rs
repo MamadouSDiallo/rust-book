@@ -1,7 +1,7 @@
 fn main() {
     let numbers = vec![1, 2, 3, 4, 5];
     let nb_mean = numbers_mean(&numbers);
-    println!("The mean of {:?} is {}", numbers, nb_mean)
+    println!("The average of the numbers in {:?} is {}. \n", numbers, nb_mean)
 }
 
 fn numbers_mean(v: &Vec<i64>) -> i64 {
