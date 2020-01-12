@@ -29,7 +29,7 @@ fn main() {
     // println!("The largest number in array {:?} is {}", t_list, t_result);
 
     let location = Point {
-        x: 5,
+        x: 5.3,
         y: 10.1,
         z: 15.5,
     };
@@ -67,20 +67,18 @@ fn largest_char(list: &[char]) -> char {
 //     largest
 // }
 
-#[derive(Debug, PartialEq, PartialOrd, Mul)]
-struct Point<T, U, V> {
+#[derive(Debug, PartialEq, PartialOrd)]
+struct Point<T> {
     x: T,
-    y: U,
-    z: V,
+    y: T,
+    z: T,
 }
 
-impl<T, U, V> Point<T, U, V> {
-    fn distance_to_origin(self) -> T
-    where
-        T: std::ops::Mul,
-        U: std::ops::Mul,
-        V: std::ops::Mul,
-    {
+impl<T> Point<T>
+where
+    T: Mul<Output = T>,
+{
+    fn distance_to_origin(self) -> T {
         let distance = self.x * self.y * self.z;
         distance
     }
