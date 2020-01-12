@@ -28,14 +28,34 @@ fn main() {
     // let t_result = largest(&t_list);
     // println!("The largest number in array {:?} is {}", t_list, t_result);
 
-    let location = Point {
+    let location = Point::<f32> {
         x: 5.3,
         y: 10.1,
         z: 15.5,
     };
-    println!("The location is {:#?}", location);
+    println!("The location is {:#?} \n", location);
+    println!(
+        "The distance to origin is {:#?} \n",
+        location.distance_to_origin()
+    );
+
+    let seven_chars: &'static str = "abcdefg";
+    println!(
+        "The largest character in {:} is {:}",
+        seven_chars,
+        largest(&char_list)
+    );
+
+    let p21 = Point2 { x: 4, y: 6.7 };
+    let p22 = Point2 { x: 4.3, y: 6 };
+    println!("The mixup point is {:?}", p21.mixup(p22));
+
+    let string1 = String::from("abcd");
+    let string2 = String::from("abcde");
+    println!("The longestt string is {:}", longest(&string1, &string2));
 }
 
+// Functions
 fn largest_i32(list: &[i32]) -> i32 {
     let mut largest = list[0];
 
@@ -57,15 +77,18 @@ fn largest_char(list: &[char]) -> char {
     largest
 }
 
-// fn largest<T: PartialOrd>(list: &[T]) -> T {
-//     let mut largest = list[0];
-//     for &item in list.iter() {
-//         if item > largest {
-//             largest = item;
-//         }
-//     }
-//     largest
-// }
+fn largest<T>(list: &[T]) -> T
+where
+    T: PartialOrd + Copy,
+{
+    let mut largest = list[0];
+    for &item in list.iter() {
+        if item > largest {
+            largest = item;
+        }
+    }
+    largest
+}
 
 #[derive(Debug, PartialEq, PartialOrd)]
 struct Point<T> {
@@ -81,5 +104,28 @@ where
     fn distance_to_origin(self) -> T {
         let distance = self.x * self.y * self.z;
         distance
+    }
+}
+
+#[derive(Debug)]
+struct Point2<T, U> {
+    x: T,
+    y: U,
+}
+
+impl<T, U> Point2<T, U> {
+    fn mixup<V, W>(self, other: Point2<V, W>) -> Point2<T, W> {
+        Point2 {
+            x: self.x,
+            y: other.y,
+        }
+    }
+}
+
+fn longest<'a>(x: &'a str, y: &'a str) -> &'a str {
+    if x.len() > y.len() {
+        x
+    } else {
+        y
     }
 }
